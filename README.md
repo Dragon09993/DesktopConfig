@@ -14,7 +14,7 @@
                                                                                                                                                                                                                    
   ### Step 3: Configure Programs                                                                                                                                                                                   
                                                                                                                                                                                                                    
-  1. Customize the configuration files in the original configuration directories to tailor the programs ( kitty ,  i3 ,  eh ) to your specific preferences. Make any necessary adjustments to achieve your desired 
+  1. Customize the configuration files in the original configuration directories to tailor the programs ( kitty ,  i3 ,  feh ) to your specific preferences. Make any necessary adjustments to achieve your desired 
   desktop environment setup.                                                                                                                                                                                       
   2. Ensure that the configurations are correctly set up for each program to match your workflow and aesthetic preferences.                                                                                        
                                                                                                                                                                                                                    
