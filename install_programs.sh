@@ -1,5 +1,4 @@
     #!/bin/bash                                                                                                                                                                                                    
                                                                                                                                                                                                                    
-    # Install required programs on Arch Linux                                                                                                                                                                      
-    sudo pacman -Syu --noconfirm kitty i3 feh picom git vim htop netcat lynx                                                                                                                                                          
-                                                          
+    # Install required programs on Arch Linux                                                                                                                                                                                                                                                                                                                              
+    sudo apt install arandr pavucontrol lxinput dmenu network-manager network-manager-gnome kitty i3 feh picom git vim htop nc lynx
