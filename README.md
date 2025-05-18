@@ -6,19 +6,24 @@
                                                                                                                                                                                                                    
   1. Run the  install_programs.sh  script to install the necessary programs ( kitty ,  i3 ,  eh , and  tty-clock ) on your Arch Linux system. Make sure the script has execution permissions by running  chmod +x  
   install_programs.sh . Execute the script using  ./install_programs.sh .                                                                                                                                          
-                                                                                                                                                                                                                   
-  ### Step 2: Copy Configuration Files                                                                                                                                                                             
+  ### Step 2: Make Settings Launcher executable
+  1. run the following command to make the Settings Launcher script executable
+      ```
+        chmod +x ~/.config/i3/settings-launcher.sh
+      ```
+
+  ### Step 3: Copy Configuration Files                                                                                                                                                                             
                                                                                                                                                                                                                    
   1. After installing the programs, copy the configuration files from the  DTConfig  directory to the respective configuration directories in your home directory ( $HOME/.config  or other relevant directories). 
   2. Update the configuration files in your original configuration directory with your preferred settings.                                                                                                         
                                                                                                                                                                                                                    
-  ### Step 3: Configure Programs                                                                                                                                                                                   
+  ### Step 4: Configure Programs                                                                                                                                                                                   
                                                                                                                                                                                                                    
   1. Customize the configuration files in the original configuration directories to tailor the programs ( kitty ,  i3 ,  feh ) to your specific preferences. Make any necessary adjustments to achieve your desired 
   desktop environment setup.                                                                                                                                                                                       
   2. Ensure that the configurations are correctly set up for each program to match your workflow and aesthetic preferences.                                                                                        
                                                                                                                                                                                                                    
-  ### Step 4: Test and Enjoy                                                                                                                                                                                       
+  ### Step 5: Test and Enjoy                                                                                                                                                                                       
                                                                                                                                                                                                                    
   1. Restart or reload the desktop environment using `(mod+shift+r)` to apply the new configurations.                                                                                                                                    
   2. Test the setup of your desktop environment to ensure that everything is working as expected.                                                                                                                  
