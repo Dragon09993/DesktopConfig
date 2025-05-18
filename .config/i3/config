@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 set $smod Shift
 set $wm_setting_font pango:FiraCode 10
 set $wm_setting_gap_width 15
@@ -47,7 +47,8 @@ bindsym $mod+d exec $wm_setting_app_launcher
 exec_always --no-startup-id $wm_setting_app_compositor
 exec feh --bg-fill /home/daniel/Downloads/bg.webp
 exec --no-startup-id picom
-
+exec xrandr --output DP-1 --left-of HDMI-0 -q 
+exec feh --bg-fill /home/daniel/.config/feh/wallpaper.webp
 set $ws1 "    1    "
 set $ws2 "    2    "
 set $ws3 "    3    "
@@ -177,5 +178,8 @@ bindsym F12 exec --no-startup-id amixer -q sset Master 5%+
 bindsym F11 exec --no-startup-id amixer -q sset Master 5%- 
 bindsym F10 exec --no-startup-id amixer -q sset Master 0
 
-bindsym $mod+p exec --no-startup-id xsel | festival --tts
+
+bindsym $mod+p exec xclip -o | festival --tts
+
 bindsym $mod+Shift+p exec --no-startup-id fkill festival
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/settings-launcher.sh
