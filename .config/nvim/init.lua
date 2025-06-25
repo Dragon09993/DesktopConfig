@@ -48,30 +48,22 @@ map("n", "<C-l>", "<C-w>l", opts)
 
 -- =====[ COLORS — FreeBSD-RED AESTHETIC ]=====
 vim.cmd [[
-  highlight Normal         guibg=#1E1328 guifg=#F7E3D8
-  highlight LineNr         guifg=#7A667A guibg=#1E1328
-  highlight CursorLineNr   guifg=#FF6F61 gui=bold
-  highlight CursorLine     guibg=#2A1C3A
-  highlight VertSplit      guifg=#7A667A guibg=#1E1328
-  highlight StatusLine     guifg=#F7E3D8 guibg=#FF6F61 gui=bold
-  highlight StatusLineNC   guifg=#7A667A guibg=#1E1328
-  highlight Visual         guibg=#FF6F61 guifg=#1E1328 gui=none
-  highlight Search         guibg=#FF9B6B guifg=#1E1328
-  highlight Pmenu          guibg=#2A1C3A guifg=#F7E3D8
-  highlight PmenuSel       guibg=#FF6F61 guifg=#1E1328
-  highlight Comment        guifg=#AA7788 italic
-  highlight Keyword        guifg=#FF6F61 gui=bold
-  highlight Identifier     guifg=#FF9B6B
-  highlight Function       guifg=#F7E3D8 gui=bold
-  highlight Constant       guifg=#FFBDBA
-  highlight String         guifg=#F79682
-  highlight Type           guifg=#FF6F61 gui=italic
-  highlight Todo           guifg=#1E1328 guibg=#FF6F61 gui=bold
-  colorscheme default
+  highlight Normal       guibg=#1E1328 guifg=#F7E3D8
+  highlight LineNr       guifg=#7A667A guibg=#1E1328
+  highlight CursorLineNr guifg=#FF6F61 gui=bold
+  highlight CursorLine   guibg=#2A1C3A
+  highlight Visual       guibg=#FF6F61 guifg=#1E1328
+  highlight Comment      guifg=#7A667A italic
+  highlight Function     guifg=#FF9B6B
+  highlight Statement    guifg=#FF6F61 gui=bold
 ]]
+
 
 -- =====[ FILETYPE / SYNTAX ]=====
 vim.cmd [[
   filetype plugin indent on
   syntax enable
 ]]
+
+
+
