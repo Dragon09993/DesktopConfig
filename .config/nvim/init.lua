@@ -53,13 +53,16 @@ vim.cmd [[
   highlight CursorLineNr guifg=#FF6F61 gui=bold
   highlight CursorLine   guibg=#2A1C3A
   highlight Visual       guibg=#FF6F61 guifg=#1E1328
-  highlight Comment      guifg=#7A667A italic
+  highlight Comment      guifg=#7A667A gui=italic
   highlight Function     guifg=#FF9B6B
   highlight Statement    guifg=#FF6F61 gui=bold
+]]
+
+vim.cmd [[
+
   filetype plugin indent on
   syntax enable
 ]]
-
 
 
 
