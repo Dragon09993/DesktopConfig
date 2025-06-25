@@ -1,64 +1,64 @@
+# Modifiers and basic variables
 set $mod Mod1
 set $smod Shift
-set $wm_setting_font pango:FiraCode 10
-set $wm_setting_gap_width 15
-set $wm_setting_gap_heigth 15
-set $wm_setting_border_size 2
-set $wm_setting_key_left l
-set $wm_setting_key_down k
-set $wm_setting_key_up j
-set $wm_setting_key_right semicolon
 
-set $wm_setting_app_terminal kitty
-set $wm_setting_app_browser chromium
-set $wm_setting_app_launcher dmenu_run
-set $wm_setting_app_compositor picom
+set $term kitty
+set $browser chromium
+set $launcher dmenu_run
 
-set $wm_color_border_active_bg #FF6F61
-set $wm_color_border_active_fg #F7E3D8
-set $wm_color_border_inactive_bg #1E1328
-set $wm_color_border_inactive_fg #7A667A
-set $wm_color_background #1E1328
+# Font and visuals
+font pango:FiraCode 10
+set $gap 15
+gaps inner $gap
+gaps outer $gap
 
-set $bar_setting_position bottom
-set $bar_setting_mode dock
-set $bar_setting_font pango:FiraCode 10
-set $bar_setting_separator " - "
-set $bar_setting_statusCommand i3status
-set $bar_setting_trayoutput primary
+# Window border and layout
+default_border pixel 2
+default_floating_border pixel 2
+smart_gaps on
+smart_borders on
 
-set $bar_color_background #1E1328
-set $bar_color_foreground #F7E3D8
-set $bar_color_statusline #F7E3D8
-set $bar_color_separator #7A667A
+# FreeBSD red theme
+set $active_bg   #CC0000
+set $active_fg   #FCEFEF
+set $inactive_bg #1A1A1A
+set $inactive_fg #888888
+set $background  #000000
 
-set $bar_color_workspace_focused_bg #FF6F61
-set $bar_color_workspace_focused_fg #F7E3D8
-set $bar_color_workspace_active_bg #FF9B6B
-set $bar_color_workspace_active_fg #F7E3D8
-set $bar_color_workspace_inactive_bg #1E1328
-set $bar_color_workspace_inactive_fg #7A667A
-set $bar_color_workspace_urgent_bg #FF6F61
-set $bar_color_workspace_urgent_fg #F7E3D8
+client.focused          $active_bg $active_bg $active_fg $active_bg $active_fg
+client.focused_inactive $inactive_bg $inactive_bg $inactive_fg $inactive_bg $inactive_fg
+client.unfocused        $inactive_bg $inactive_bg $inactive_fg $inactive_bg $inactive_fg
+client.urgent           $active_bg $active_bg $active_fg $active_bg $active_fg
+client.placeholder      $inactive_bg $inactive_bg $inactive_fg $inactive_bg $inactive_fg
+client.background       $background
 
-bindsym $mod+Return exec $wm_setting_app_terminal
-bindsym $mod+$smod+Return exec $wm_setting_app_browser
-bindsym $mod+d exec $wm_setting_app_launcher
-exec_always --no-startup-id $wm_setting_app_compositor
-exec feh --bg-fill /home/daniel/Downloads/bg.webp
-exec --no-startup-id picom
+# Launcher and core apps
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $launcher
+bindsym $mod+b exec $browser
 
-set $ws1 "    1    "
-set $ws2 "    2    "
-set $ws3 "    3    "
-set $ws4 "    4    "
-set $ws5 "    5    "
-set $ws6 "    6    "
-set $ws7 "    7    "
-set $ws8 "    8    "
-set $ws9 "    9    "
-set $ws10 "    10    "
+# Power menu using dmenu
+bindsym $mod+Shift+e exec --no-startup-id "echo -e 'shutdown\nreboot\nlogout' | dmenu -p 'Power:' | xargs -I CMD sh -c ' \
+    [ CMD = logout ] && i3-msg exit || \
+    [ CMD = reboot ] && doas reboot || \
+    [ CMD = shutdown ] && doas shutdown -p now'"
 
+# Browser menu
+bindsym $mod+Shift+b exec --no-startup-id "echo -e 'firefox\nchromium\nqutebrowser' | dmenu -p 'Browser:' | xargs -r -I{} $SHELL -c '{} &'"
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Workspace bindings
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -70,6 +70,7 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
+# Move container to workspace
 bindsym $mod+$smod+1 move container to workspace $ws1
 bindsym $mod+$smod+2 move container to workspace $ws2
 bindsym $mod+$smod+3 move container to workspace $ws3
@@ -81,101 +82,74 @@ bindsym $mod+$smod+8 move container to workspace $ws8
 bindsym $mod+$smod+9 move container to workspace $ws9
 bindsym $mod+$smod+0 move container to workspace $ws10
 
-bindsym $mod+$wm_setting_key_left focus left
-bindsym $mod+$wm_setting_key_down focus down
-bindsym $mod+$wm_setting_key_up focus up
-bindsym $mod+$wm_setting_key_right focus right
+# Focus and movement
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+semicolon focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+semicolon move right
 
-bindsym $mod+$smod+$wm_setting_key_left move left
-bindsym $mod+$smod+$wm_setting_key_down move down
-bindsym $mod+$smod+$wm_setting_key_up move up
-bindsym $mod+$smod+$wm_setting_key_right move right
-
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
+# Resize mode
 mode "resize" {
-    bindsym $wm_setting_key_left resize shrink width 10 px or 10 ppt
-    bindsym $wm_setting_key_down resize grow height 10 px or 10 ppt
-    bindsym $wm_setting_key_up resize shrink height 10 px or 10 ppt
-    bindsym $wm_setting_key_right resize grow width 10 px or 10 ppt
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
-gaps horizontal $wm_setting_gap_width
-gaps vertical $wm_setting_gap_heigth
-smart_gaps on
-
-default_border pixel $wm_setting_border_size
-default_floating_border pixel $wm_setting_border_size
-smart_borders on
-
-client.focused $wm_color_border_active_bg $wm_color_border_active_bg $wm_color_border_active_fg $wm_color_border_active_bg $wm_color_border_active_bg
-client.focused_inactive $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
-client.unfocused $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
-client.urgent $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
-client.placeholder $wm_color_border_inactive_bg $wm_color_border_inactive_bg $wm_color_border_inactive_fg $wm_color_border_inactive_bg $wm_color_border_inactive_bg
-client.background $wm_color_background
-
-bar {
-    position $bar_setting_position
-    mode $bar_setting_mode
-    font $bar_setting_font
-    separator_symbol $bar_setting_separator
-    status_command $bar_setting_statusCommand
-    tray_output $bar_setting_trayoutput
-    colors {
-        background $bar_color_background
-        statusline $bar_color_statusline
-        separator $bar_color_separator
-        focused_workspace $bar_color_workspace_focused_bg $bar_color_workspace_focused_bg $bar_color_workspace_focused_fg
-        active_workspace $bar_color_workspace_active_bg $bar_color_workspace_active_bg $bar_color_workspace_active_fg
-        inactive_workspace $bar_color_workspace_inactive_bg $bar_color_workspace_inactive_bg $bar_color_workspace_inactive_fg
-        urgent_workspace $bar_color_workspace_urgent_bg $bar_color_workspace_urgent_bg $bar_color_workspace_urgent_fg
-    }
-}
-
-font $wm_setting_font
-floating_modifier $mod
+# Layout
 bindsym $mod+f fullscreen toggle
-bindsym $mod+$smod+f floating toggle
-bindsym $mod+$smod+q kill
-bindsym $mod+$smod+r restart
-bindsym $mod+$smod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-bindsym $mod+h split h
-bindsym $mod+v split v
-
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+v split v
+bindsym $mod+h split h
 
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-
+# Misc
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r restart
 bindsym $mod+a focus parent
-bindsym $mod+Shift+minus move scratchpad
+
+# Scratchpad
 bindsym $mod+minus scratchpad show
-                                                                                                                                                                   
+bindsym $mod+Shift+minus move scratchpad
 
-bindsym F12 exec --no-startup-id amixer -q sset Master 5%+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-bindsym F11 exec --no-startup-id amixer -q sset Master 5%- 
-bindsym F10 exec --no-startup-id amixer -q sset Master 0
+# Wallpaper
+exec_always --no-startup-id feh --bg-fill /home/daniel/Downloads/bg.webp
 
-bindsym $mod+p exec --no-startup-id xsel | festival --tts
-bindsym $mod+Shift+p exec --no-startup-id fkill festival
+# Bar settings
+bar {
+    position bottom
+    font pango:FiraCode 10
+    status_command i3status
+    tray_output primary
+    separator_symbol " - "
+    colors {
+        background $background
+        statusline $active_fg
+        separator $inactive_fg
+
+        focused_workspace  $active_bg $active_bg $active_fg
+        active_workspace   #A60000 #A60000 $active_fg
+        inactive_workspace $inactive_bg $inactive_bg $inactive_fg
+        urgent_workspace   $active_bg $active_bg $active_fg
+    }
+}
+
+# Removed:
+# - amixer (not used in FreeBSD by default, replace with `mixer` manually if desired)
+# - festival/xsel TTS shortcut (not portable by default)
+
+# Optional: Audio keybinds using FreeBSD `mixer`
+# bindsym XF86AudioRaiseVolume exec mixer vol +5
+# bindsym XF86AudioLowerVolume exec mixer vol -5
+# bindsym XF86AudioMute exec mixer vol 0
