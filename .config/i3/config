@@ -40,8 +40,8 @@ bindsym $mod+b exec $browser
 # Power menu using dmenu
 bindsym $mod+Shift+e exec --no-startup-id "echo -e 'shutdown\nreboot\nlogout' | dmenu -p 'Power:' | xargs -I CMD sh -c ' \
     [ CMD = logout ] && i3-msg exit || \
-    [ CMD = reboot ] && doas reboot || \
-    [ CMD = shutdown ] && doas shutdown -p now'"
+    [ CMD = reboot ] && sudo reboot || \
+    [ CMD = shutdown ] && sudo shutdown -p now'"
 
 # Browser menu
 bindsym $mod+Shift+b exec --no-startup-id "echo -e 'firefox\nchromium\nqutebrowser' | dmenu -p 'Browser:' | xargs -r -I{} $SHELL -c '{} &'"
