@@ -148,6 +148,6 @@ bar {
 # - festival/xsel TTS shortcut (not portable by default)
 
 # Optional: Audio keybinds using FreeBSD `mixer`
-# bindsym XF86AudioRaiseVolume exec mixer /dev/mixer0 vol.volume=+0.10
-# bindsym XF86AudioLowerVolume exec mixer /dev/mixer0 vol.volume=-0.10
-# bindsym XF86AudioMute mixer /dev/mixer0 vol.volume=0.00
+ bindsym XF86AudioRaiseVolume exec mixer /dev/mixer0 vol.volume=+0.10
+ bindsym XF86AudioLowerVolume exec mixer /dev/mixer0 vol.volume=-0.10
+ bindsym XF86AudioMute mixer /dev/mixer0 vol.volume=0.00
