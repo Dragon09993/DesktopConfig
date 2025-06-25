@@ -56,14 +56,11 @@ vim.cmd [[
   highlight Comment      guifg=#7A667A italic
   highlight Function     guifg=#FF9B6B
   highlight Statement    guifg=#FF6F61 gui=bold
-]]
-
-
--- =====[ FILETYPE / SYNTAX ]=====
-vim.cmd [[
   filetype plugin indent on
   syntax enable
 ]]
+
+
 
 
 
