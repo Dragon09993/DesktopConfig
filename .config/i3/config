@@ -8,7 +8,7 @@ set $launcher dmenu_run
 
 # Font and visuals
 font pango:FiraCode 10
-set $gap 15
+set $gap 5
 gaps inner $gap
 gaps outer $gap
 
@@ -38,7 +38,7 @@ bindsym $mod+d exec $launcher
 bindsym $mod+b exec firefox
 
 # Power menu using dmenu
-bindsym $mod+Shift+e exec --no-startup-id "echo -e 'shutdown\nlogout' | dmenu -p 'Power:' | xargs -I CMD sh -c ' \
+bindsym $mod+Shift+p exec --no-startup-id "echo -e 'shutdown\nlogout' | dmenu -p 'Power:' | xargs -I CMD sh -c ' \
     [ CMD = logout ] && i3-msg exit || \
     [ CMD = shutdown ] && shutdown -p now'"
 
