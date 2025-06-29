@@ -35,16 +35,13 @@ client.background       $background
 # Launcher and core apps
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $launcher
-bindsym $mod+b exec $browser
+bindsym $mod+b exec firefox
 
 # Power menu using dmenu
-bindsym $mod+Shift+e exec --no-startup-id "echo -e 'shutdown\nreboot\nlogout' | dmenu -p 'Power:' | xargs -I CMD sh -c ' \
+bindsym $mod+Shift+e exec --no-startup-id "echo -e 'shutdown\nlogout' | dmenu -p 'Power:' | xargs -I CMD sh -c ' \
     [ CMD = logout ] && i3-msg exit || \
-    [ CMD = reboot ] && sudo reboot || \
-    [ CMD = shutdown ] && sudo shutdown -p now'"
+    [ CMD = shutdown ] && shutdown -p now'"
 
-# Browser menu
-bindsym $mod+Shift+b exec --no-startup-id "echo -e 'firefox\nchromium\nqutebrowser' | dmenu -p 'Browser:' | xargs -r -I{} $SHELL -c '{} &'"
 
 # Workspaces
 set $ws1 "1"
@@ -148,6 +145,10 @@ bar {
 # - festival/xsel TTS shortcut (not portable by default)
 
 # Optional: Audio keybinds using FreeBSD `mixer`
- bindsym XF86AudioRaiseVolume exec mixer /dev/mixer0 vol.volume=+0.10
- bindsym XF86AudioLowerVolume exec mixer /dev/mixer0 vol.volume=-0.10
- bindsym XF86AudioMute mixer /dev/mixer0 vol.volume=0.00
+ bindsym XF86AudioRaiseVolume exec mixer vol.volume=+0.10
+ bindsym XF86AudioLowerVolume exec mixer vol.volume=-0.10
+ bindsym XF86AudioMute exec mixer vol.volume=0.00
+
+bindsym $mod+Shift+s exec --no-startup-id sh -c 'cmd=$(echo -e "wifimgr\nkdisplay" | dmenu -p "Launch:") && [ -n "$cmd" ] && exec "$cmd"'
+
+
